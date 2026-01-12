@@ -1,3 +1,5 @@
+export type Language = 'en' | 'fr';
+
 export interface TeamMember {
   name: string;
   role: string;
@@ -17,6 +19,43 @@ export interface ShowcaseRule {
   title: string;
   description: string;
   example?: string;
+}
+
+export interface EventContent {
+  eventDetails: {
+    title: string;
+    subtitle: string;
+    mission: string;
+    location: string;
+    date: string;
+  };
+  agenda: AgendaItem[];
+  showcaseRules: ShowcaseRule[];
+  ui: {
+    heroTitleLine1: string;
+    heroTitleLine2: string;
+    pressStart: string;
+    enterName: string;
+    joinClub: string;
+    viewGoals: string;
+    ready: string;
+    credits: string;
+    missionObj: string;
+    newQuest: string;
+    dateLabel: string;
+    locationLabel: string;
+    questLog: string;
+    timeframe: string;
+    stages: string;
+    tutorial: string;
+    legendaryItem: string;
+    aiBuilder: string;
+    aiBuilderDesc: string;
+    acceleration: string;
+    welcomeUser: string;
+    levelProgress: string;
+    level: string;
+  };
 }
 
 export type ChatRole = 'user' | 'model';

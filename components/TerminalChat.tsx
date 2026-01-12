@@ -41,7 +41,7 @@ const TerminalChat: React.FC = () => {
       }));
 
       const chat = ai.chats.create({
-        model: 'gemini-2.5-flash-latest',
+        model: 'gemini-3-flash-preview',
         config: { systemInstruction: SYSTEM_INSTRUCTION },
         history: history
       });

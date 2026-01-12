@@ -1,43 +1,105 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowDown, Github, Gamepad2, Heart, Battery } from 'lucide-react';
+import { ArrowDown, Github, Gamepad2, Heart } from 'lucide-react';
 import RetroGrid from './components/RetroGrid';
 import Timeline from './components/Timeline';
 import PresentationGuide from './components/PresentationGuide';
-import TerminalChat from './components/TerminalChat';
-import { EVENT_DETAILS } from './constants';
+import { CONTENT } from './constants';
+import { Language } from './types';
 
 const App: React.FC = () => {
   const [hasStarted, setHasStarted] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [language, setLanguage] = useState<Language>('fr');
+  const [userName, setUserName] = useState('');
+
+  const currentContent = CONTENT[language];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+      const maxScroll = docHeight - winHeight;
+
+      const scroll = maxScroll > 0 ? scrollTop / maxScroll : 0;
+      const safeScroll = Number.isFinite(scroll) ? Math.min(Math.max(scroll, 0), 1) : 0;
+      
+      setScrollProgress(safeScroll);
+
+      // Add slight background change when complete
+      if (safeScroll >= 0.99) {
+        document.body.classList.add('level-complete');
+      } else {
+        document.body.classList.remove('level-complete');
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    // Attach to window for global scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger once to set initial state if page is already scrolled or refreshed
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [hasStarted]); // Re-bind if view changes, though technically window scroll is global
+
+  const scrollToSection = (id: string) => {
+      const element = document.getElementById(id);
+      if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+      }
+  };
 
   // START SCREEN
   if (!hasStarted) {
     return (
       <div className="h-screen w-full bg-black flex flex-col items-center justify-center font-game text-center relative overflow-hidden">
         <RetroGrid />
-        <div className="z-20 flex flex-col items-center animate-float-pixel">
+        <div className="z-20 flex flex-col items-center animate-float-pixel px-4">
            <h1 className="text-4xl md:text-6xl text-white mb-8 text-shadow-retro leading-relaxed">
-             TECH CLUB <br/>
-             <span className="text-game-green">LAUNCH EVENT</span>
+             {currentContent.ui.heroTitleLine1} <br/>
+             <span className="text-game-green">{currentContent.ui.heroTitleLine2}</span>
            </h1>
            
-           <div className="text-game-yellow text-sm mb-12 animate-pulse">
+           <div className="text-game-yellow text-sm mb-8 animate-pulse">
              © 2026 AIVANCITY SCHOOL OF TECHNOLOGY
+           </div>
+
+           {/* User Setup Section */}
+           <div className="flex flex-col gap-6 mb-12 bg-black/50 p-6 border-2 border-gray-700 backdrop-blur-md">
+              {/* Language Toggle */}
+              <div className="flex justify-center gap-4">
+                 <button 
+                   onClick={() => setLanguage('fr')}
+                   className={`px-4 py-2 text-xs border-2 transition-all ${language === 'fr' ? 'bg-white text-black border-white' : 'text-gray-500 border-gray-800 hover:border-gray-500'}`}
+                 >
+                   FRANÇAIS
+                 </button>
+                 <button 
+                   onClick={() => setLanguage('en')}
+                   className={`px-4 py-2 text-xs border-2 transition-all ${language === 'en' ? 'bg-white text-black border-white' : 'text-gray-500 border-gray-800 hover:border-gray-500'}`}
+                 >
+                   ENGLISH
+                 </button>
+              </div>
+
+              {/* Name Input */}
+              <div className="flex flex-col gap-2 text-left">
+                <label className="text-[10px] text-game-cyan">{currentContent.ui.enterName}</label>
+                <input 
+                  type="text" 
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  placeholder="PLAYER 1"
+                  className="bg-gray-900 border-b-2 border-game-green text-white font-mono p-2 focus:outline-none focus:bg-gray-800 transition-colors"
+                />
+              </div>
            </div>
 
            <button 
              onClick={() => setHasStarted(true)}
-             className="px-8 py-4 bg-transparent border-4 border-white text-white text-xl hover:bg-white hover:text-black transition-colors animate-pulse-fast hover:animate-none"
+             className="px-8 py-4 bg-transparent border-4 border-white text-white text-xl hover:bg-white hover:text-black transition-colors animate-pulse-fast hover:animate-none disabled:opacity-50 disabled:cursor-not-allowed"
            >
-             PRESS START
+             {currentContent.ui.pressStart}
            </button>
         </div>
         
@@ -51,76 +113,81 @@ const App: React.FC = () => {
 
   // MAIN GAME
   return (
-    <div className="min-h-screen bg-[#050a0e] text-gray-100 font-sans selection:bg-game-green/30 cursor-crosshair">
+    <div className={`min-h-screen bg-[#050a0e] text-gray-100 font-sans selection:bg-game-green/30 cursor-crosshair transition-colors duration-1000 ${scrollProgress > 0.99 ? 'shadow-[inset_0_0_100px_rgba(0,255,255,0.1)]' : ''}`}>
       <RetroGrid />
       
+      {/* Liquid Spill Effect Overlay */}
+      <div className={`spill-overlay ${scrollProgress > 0.99 ? 'animate-spill' : 'h-0 opacity-0'}`}></div>
+
       {/* HUD (Navbar) */}
-      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 border-b-4 ${scrolled ? 'bg-black/90 border-game-green py-2' : 'bg-transparent border-transparent py-6'}`}>
-        <div className="max-w-6xl mx-auto px-4 flex justify-between items-center font-game">
-          
-          {/* Health/Mana Bars Concept */}
-          <div className="flex flex-col gap-1">
-             <div className="flex items-center gap-2 text-xs text-white">
-                <span className="text-game-pink">HP</span>
-                <div className="w-24 h-3 bg-gray-800 border border-gray-600">
-                  <div className="w-[80%] h-full bg-game-pink"></div>
-                </div>
-             </div>
-             <div className="flex items-center gap-2 text-xs text-white">
-                <span className="text-game-cyan">MP</span>
-                <div className="w-24 h-3 bg-gray-800 border border-gray-600">
-                  <div className="w-[100%] h-full bg-game-cyan"></div>
-                </div>
-             </div>
+      <nav className="fixed top-0 w-full z-40 bg-black/80 border-b border-gray-800 backdrop-blur-sm">
+        {/* Progress Bar Container */}
+        <div className="w-full h-2 bg-gray-900">
+           {/* The Liquid Bar */}
+           <div 
+             className="h-full bg-game-cyan shadow-[0_0_10px_#00ffff] transition-all duration-100 ease-out relative"
+             style={{ width: `${Math.min(scrollProgress * 100, 100)}%` }}
+           >
+             {/* Leading Edge Sparkle */}
+             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_5px_white]"></div>
+           </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-game">
+          <div className="text-xs text-game-cyan animate-pulse flex gap-4">
+             <span>{currentContent.ui.levelProgress}: {Math.floor(scrollProgress * 100)}%</span>
+             {userName && <span className="hidden md:inline text-white">| {currentContent.ui.welcomeUser} {userName}</span>}
           </div>
 
           <div className="flex items-center gap-4">
-             <button className="hidden md:flex px-4 py-2 text-[10px] text-gray-300 hover:text-white border-2 border-transparent hover:border-white transition-all">
-               LOGIN_
-             </button>
-             <button className="px-4 py-2 bg-game-green text-black text-[10px] border-b-4 border-green-800 active:border-b-0 active:translate-y-1 hover:brightness-110 transition-all">
-               JOIN DISCORD
-             </button>
+             <a 
+               href="https://forms.office.com/e/HCjqi3C7uy" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="px-4 py-2 bg-game-green text-black text-[10px] border-b-4 border-green-800 active:border-b-0 active:translate-y-1 hover:brightness-110 transition-all"
+             >
+               {currentContent.ui.joinClub}
+             </a>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <header className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20">
+      <header id="goals" className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20">
         <div className="relative z-10 space-y-6 max-w-4xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-black border-2 border-game-green text-game-green text-[10px] font-game mb-4 shadow-retro-green">
             <span className="w-2 h-2 bg-game-green animate-ping"></span>
-            NEW QUEST AVAILABLE
+            {currentContent.ui.newQuest}
           </div>
           
           <h1 className="text-4xl md:text-6xl font-game leading-tight tracking-tight">
-            AIVANCITY <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-game-green via-game-cyan to-game-pink animate-pulse">
-              TECH CLUB
-            </span>
+             {currentContent.ui.heroTitleLine1} <br/>
+             <span className="text-transparent bg-clip-text bg-gradient-to-r from-game-green via-game-cyan to-game-pink animate-pulse">
+               {currentContent.ui.heroTitleLine2}
+             </span>
           </h1>
           
           <div className="bg-black/50 p-6 border-2 border-gray-700 max-w-2xl mx-auto backdrop-blur-sm">
             <p className="text-lg md:text-xl font-mono text-gray-300">
-              {EVENT_DETAILS.mission} <br/>
+              {currentContent.eventDetails.mission} <br/>
             </p>
             <div className="mt-4 text-xs font-game text-game-yellow">
-              >> MISSION OBJECTIVE: Build Portfolios. Avoid Theory.
+              {currentContent.ui.missionObj}
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8 font-game text-xs">
             <div className="group cursor-pointer">
               <div className="bg-game-black border-4 border-white px-6 py-4 shadow-retro group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
-                <span className="text-gray-400 block mb-1">DATE</span>
-                <span className="text-game-cyan">{EVENT_DETAILS.date}</span>
+                <span className="text-gray-400 block mb-1">{currentContent.ui.dateLabel}</span>
+                <span className="text-game-cyan">{currentContent.eventDetails.date}</span>
               </div>
             </div>
             
             <div className="group cursor-pointer">
               <div className="bg-game-black border-4 border-white px-6 py-4 shadow-retro group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
-                <span className="text-gray-400 block mb-1">LOCATION</span>
-                <span className="text-game-pink">MAIN HALL / DISCORD</span>
+                <span className="text-gray-400 block mb-1">{currentContent.ui.locationLabel}</span>
+                <span className="text-game-pink">{currentContent.eventDetails.location}</span>
               </div>
             </div>
           </div>
@@ -133,19 +200,36 @@ const App: React.FC = () => {
 
       {/* Level Select (Agenda) */}
       <section className="relative z-10 border-t-4 border-gray-800 bg-[#080c14]">
-        <Timeline />
+        <Timeline 
+          agenda={currentContent.agenda} 
+          labels={{
+            questLog: currentContent.ui.questLog,
+            stages: currentContent.ui.stages,
+            timeframe: currentContent.ui.timeframe,
+            level: currentContent.ui.level
+          }}
+        />
       </section>
 
       {/* Tutorial (Rules) */}
       <section className="relative z-10">
-        <PresentationGuide />
+        <PresentationGuide 
+          rules={currentContent.showcaseRules} 
+          labels={{
+            tutorial: currentContent.ui.tutorial,
+            legendaryItem: currentContent.ui.legendaryItem,
+            aiBuilder: currentContent.ui.aiBuilder,
+            aiBuilderDesc: currentContent.ui.aiBuilderDesc,
+            acceleration: currentContent.ui.acceleration
+          }}
+        />
       </section>
 
       {/* Game Over / Credits */}
       <footer className="relative z-10 py-24 px-4 text-center bg-black border-t-4 border-white">
         <div className="max-w-3xl mx-auto space-y-10">
-          <h2 className="text-3xl md:text-5xl font-game text-white glitch" data-text="READY TO SHIP?">
-            READY TO SHIP?
+          <h2 className="text-3xl md:text-5xl font-game text-white glitch" data-text="READY?">
+            {currentContent.ui.ready}
           </h2>
           
           <div className="font-mono text-gray-400">
@@ -154,24 +238,30 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-center gap-6 font-game text-xs">
-             <button className="flex items-center justify-center gap-3 px-8 py-4 bg-white text-black border-b-8 border-gray-400 hover:border-gray-500 active:border-b-0 active:translate-y-2 transition-all">
+             <button 
+               onClick={() => scrollToSection('goals')}
+               className="flex items-center justify-center gap-3 px-8 py-4 bg-white text-black border-b-8 border-gray-400 hover:border-gray-500 active:border-b-0 active:translate-y-2 transition-all"
+             >
                <Github size={20} />
-               VIEW SOURCE
+               {currentContent.ui.viewGoals}
              </button>
-             <button className="px-8 py-4 bg-game-green text-black border-b-8 border-green-800 hover:brightness-110 active:border-b-0 active:translate-y-2 transition-all">
-               REGISTER [FREE]
-             </button>
+             <a 
+               href="https://forms.office.com/e/HCjqi3C7uy"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="px-8 py-4 bg-game-green text-black border-b-8 border-green-800 hover:brightness-110 active:border-b-0 active:translate-y-2 transition-all block text-center"
+             >
+               {currentContent.ui.joinClub}
+             </a>
           </div>
           
           <div className="pt-16 flex items-center justify-center gap-4 text-gray-600 font-mono text-xs">
             <Gamepad2 size={16} />
-            <span>BUILT WITH REACT & TAILWIND</span>
+            <span>{currentContent.ui.credits}</span>
             <Heart size={16} className="text-red-900 fill-red-900" />
           </div>
         </div>
       </footer>
-
-      <TerminalChat />
     </div>
   );
 };

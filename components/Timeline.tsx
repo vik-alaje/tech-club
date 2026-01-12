@@ -1,23 +1,33 @@
 import React from 'react';
-import { AGENDA } from '../constants';
+import { AgendaItem } from '../types';
 import { Sword, Scroll, Users, Skull } from 'lucide-react';
 
 const iconMap: any = {
-  rocket: Sword, // Kickoff -> Start Quest
-  code: Scroll,  // Showcase -> Skill Scroll
-  users: Users,  // Wrapup -> Party
-  zap: Skull,    // Danger/Boss?
+  rocket: Sword,
+  code: Scroll, 
+  users: Users, 
+  zap: Skull,    
 };
 
-const Timeline: React.FC = () => {
+interface TimelineProps {
+  agenda: AgendaItem[];
+  labels: {
+    questLog: string;
+    stages: string;
+    timeframe: string;
+    level: string;
+  }
+}
+
+const Timeline: React.FC<TimelineProps> = ({ agenda, labels }) => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 relative">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-game text-game-yellow text-shadow-retro mb-4">
-          QUEST LOG
+          {labels.questLog}
         </h2>
         <div className="inline-block px-4 py-1 bg-game-black border-2 border-game-green text-game-green font-mono text-xs">
-          STAGES: {AGENDA.length} // DIFFICULTY: HARDCORE
+          {labels.stages}: {agenda.length} // {labels.timeframe}
         </div>
       </div>
 
@@ -27,7 +37,7 @@ const Timeline: React.FC = () => {
            <div className="w-full h-full bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzjwqoAoYLkQrAKiAGQAAgCjDAoV83f1JgAAAABJRU5ErkJggg==')] opacity-50"></div>
         </div>
 
-        {AGENDA.map((item, index) => {
+        {agenda.map((item, index) => {
           const Icon = iconMap[item.icon] || Sword;
           const isLeft = index % 2 === 0;
 
@@ -44,7 +54,7 @@ const Timeline: React.FC = () => {
                   <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-gray-900 z-10"></div>
 
                   <div className="flex items-center justify-between mb-3 border-b-2 border-dashed border-gray-700 pb-2">
-                    <span className="font-game text-xs text-game-pink">LEVEL 0{index + 1}</span>
+                    <span className="font-game text-xs text-game-pink">{labels.level} 0{index + 1}</span>
                     <span className="font-mono text-xs text-game-green blink-slow">{item.time}</span>
                   </div>
                   
