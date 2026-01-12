@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Radio, ChevronRight } from 'lucide-react';
-import { GoogleGenAI } from '@google/genai';
+import { MessageSquare, X, Send, Radio } from 'lucide-react';
 import { ChatMessage } from '../types';
-import { SYSTEM_INSTRUCTION } from '../constants';
 
 const TerminalChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Connection established. What is your query, User?' }
+    { role: 'model', text: 'System Online. This channel is currently in broadcast-only mode.' }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -29,32 +27,14 @@ const TerminalChat: React.FC = () => {
     setInput('');
     setIsLoading(true);
 
-    try {
-      if (!process.env.API_KEY) {
-        throw new Error("API Key missing");
-      }
-
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const history = messages.map(m => ({
-        role: m.role,
-        parts: [{ text: m.text }]
-      }));
-
-      const chat = ai.chats.create({
-        model: 'gemini-3-flash-preview',
-        config: { systemInstruction: SYSTEM_INSTRUCTION },
-        history: history
-      });
-
-      const response = await chat.sendMessage({ message: userMsg.text });
-      const text = response.text || "Signal lost...";
-      setMessages(prev => [...prev, { role: 'model', text }]);
-
-    } catch (error) {
-      setMessages(prev => [...prev, { role: 'model', text: "ERROR: LINK SEVERED." }]);
-    } finally {
+    // Simulate system response latency
+    setTimeout(() => {
+      setMessages(prev => [...prev, { 
+        role: 'model', 
+        text: 'Command received. Automated response: Please join us at the event for live interaction.' 
+      }]);
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -112,7 +92,7 @@ const TerminalChat: React.FC = () => {
                
                {isLoading && (
                  <div className="text-game-cyan text-xs animate-pulse">
-                   > DECRYPTING RESPONSE...
+                   > PROCESSING...
                  </div>
                )}
                <div ref={messagesEndRef} />
