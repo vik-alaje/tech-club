@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Club Launch - Press Start</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              game: ['"Press Start 2P"', 'cursive'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              game: {
+                black: '#1a1a1a',
+                dark: '#050a0e',
+                green: '#4ade80',
+                neon: '#00ff00',
+                pink: '#ff00ff',
+                cyan: '#00ffff',
+                yellow: '#ffff00',
+              }
+            },
+            animation: {
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float-pixel': 'floatPixel 4s steps(4) infinite',
+              'scroll-grid': 'scrollGrid 20s linear infinite',
+              'typewriter': 'typewriter 2s steps(40, end)',
+            },
+            keyframes: {
+              floatPixel: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-8px)' },
+              },
+              scrollGrid: {
+                '0%': { transform: 'translateY(0)' },
+                '100%': { transform: 'translateY(4rem)' },
+              }
+            },
+            boxShadow: {
+              'retro': '4px 4px 0px 0px rgba(0,0,0,0.5)',
+              'retro-hover': '2px 2px 0px 0px rgba(0,0,0,0.5)',
+              'retro-green': '4px 4px 0px 0px #166534',
+              'retro-pink': '4px 4px 0px 0px #be185d',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050a0e;
+        color: #f8fafc;
+        overflow-x: hidden;
+        cursor: crosshair; /* Game cursor */
+      }
+      
+      /* CRT Scanline Overlay */
+      .scanlines::before {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 50;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+      
+      /* CRT Flicker */
+      .crt-flicker {
+        animation: flicker 0.15s infinite;
+      }
+
+      @keyframes flicker {
+        0% { opacity: 0.97; }
+        50% { opacity: 1; }
+        100% { opacity: 0.98; }
+      }
+
+      /* Pixel Art Selection */
+      ::selection {
+        background: #00ff00;
+        color: #000;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+        background: #050a0e;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4ade80; 
+        border: 2px solid #050a0e;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111827;
+        border-left: 2px solid #050a0e;
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+      }
+    }
+    </script>
+  </head>
+  <body class="scanlines">
+    <div id="root"></div>
+  </body>
+</html>
