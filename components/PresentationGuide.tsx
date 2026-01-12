@@ -92,11 +92,11 @@ const PresentationGuide: React.FC<PresentationGuideProps> = ({ rules, labels }) 
                    </div>
                    <div className="space-y-1 font-mono text-[10px] text-white">
                       <div><span className="text-game-pink">USER:</span> Build a tech club site.</div>
-                      <div className="text-game-cyan animate-pulse">> ANALYZING REQUEST...</div>
+                      <div className="text-game-cyan animate-pulse">&gt; ANALYZING REQUEST...</div>
                       <div className="pl-2 border-l-2 border-game-green mt-2 text-gray-400">
                         Generating Components...<br/>
-                        > Timeline.tsx [OK]<br/>
-                        > App.tsx [OK]<br/>
+                        &gt; Timeline.tsx [OK]<br/>
+                        &gt; App.tsx [OK]<br/>
                         <span className="text-game-green">DONE.</span>
                       </div>
                    </div>

@@ -66,7 +66,7 @@ const Timeline: React.FC<TimelineProps> = ({ agenda, labels }) => {
                       <ul className="space-y-1">
                         {item.details.map((detail, idx) => (
                           <li key={idx} className="flex items-start gap-2 font-mono text-xs text-gray-300">
-                            <span className="text-game-yellow">></span>
+                            <span className="text-game-yellow">&gt;</span>
                             <span>{detail}</span>
                           </li>
                         ))}

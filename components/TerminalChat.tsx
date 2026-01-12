@@ -92,7 +92,7 @@ const TerminalChat: React.FC = () => {
                
                {isLoading && (
                  <div className="text-game-cyan text-xs animate-pulse">
-                   > PROCESSING...
+                   &gt; PROCESSING...
                  </div>
                )}
                <div ref={messagesEndRef} />
@@ -100,7 +100,7 @@ const TerminalChat: React.FC = () => {
 
             {/* Input Area */}
             <div className="p-2 bg-gray-900 border-t-4 border-white z-20 flex gap-2">
-              <span className="text-game-green pt-2">></span>
+              <span className="text-game-green pt-2">&gt;</span>
               <input 
                 autoFocus
                 className="flex-1 bg-transparent border-none outline-none text-white font-mono placeholder-gray-600"
