@@ -1,6 +1,7 @@
 import React from 'react';
-import { ShowcaseRule } from '../types';
+import { ShowcaseRule, EventContent, Language } from '../types';
 import { Zap } from 'lucide-react';
+import InteractiveTerminal from './InteractiveTerminal';
 
 interface PresentationGuideProps {
   rules: ShowcaseRule[];
@@ -10,10 +11,13 @@ interface PresentationGuideProps {
     aiBuilder: string;
     aiBuilderDesc: string;
     acceleration: string;
-  }
+  };
+  content: EventContent;
+  language: Language;
+  setLanguage: (lang: Language) => void;
 }
 
-const PresentationGuide: React.FC<PresentationGuideProps> = ({ rules, labels }) => {
+const PresentationGuide: React.FC<PresentationGuideProps> = ({ rules, labels, content, language, setLanguage }) => {
   return (
     <div className="py-20 border-y-4 border-gray-800 bg-[#0a0a0a] relative overflow-hidden">
       {/* Background patterns */}
@@ -25,7 +29,7 @@ const PresentationGuide: React.FC<PresentationGuideProps> = ({ rules, labels }) 
             <span className="text-game-pink">&lt;</span> {labels.tutorial} <span className="text-game-pink">/&gt;</span>
           </h2>
           <p className="font-mono text-game-green text-sm max-w-2xl mx-auto border border-game-green/30 bg-game-green/5 p-4 rounded">
-            [SYSTEM MESSAGE]: Presentation protocol loaded. Follow these rules to maximize XP gain.
+            [SYSTEM MESSAGE]: Speakers have 8 minutes each. Here is how to use that time best.
           </p>
         </div>
 
@@ -53,54 +57,32 @@ const PresentationGuide: React.FC<PresentationGuideProps> = ({ rules, labels }) 
 
         {/* Special Item Section */}
         <div className="relative border-4 border-game-yellow bg-gray-900 p-8 shadow-retro-pink">
-           <div className="absolute top-0 right-0 p-2 bg-game-yellow text-black font-bold font-game text-xs">
+           <div className="absolute top-0 right-0 p-2 bg-game-yellow text-black font-bold font-game text-xs animate-pulse">
               {labels.legendaryItem}
            </div>
 
-           <div className="flex flex-col md:flex-row gap-12 items-center">
+           <div className="flex flex-col md:flex-row gap-12 items-start">
              
              {/* Text Side */}
-             <div className="flex-1 space-y-4">
+             <div className="flex-1 space-y-4 pt-4">
                <h3 className="text-2xl font-game text-white">{labels.aiBuilder}</h3>
                <p className="font-mono text-gray-300 leading-relaxed">
                  {labels.aiBuilderDesc}
                </p>
-               <div className="inline-flex items-center gap-2 border-2 border-game-green px-4 py-2 bg-game-green/10 text-game-green font-mono text-xs animate-pulse-fast">
-                 <Zap size={14} />
+               <div className="inline-flex items-center gap-2 border-2 border-game-green px-4 py-2 bg-game-green/10 text-game-green font-mono text-xs">
+                 <Zap size={14} className="animate-bounce" />
                  <span>{labels.acceleration}</span>
                </div>
              </div>
 
-             {/* Visual Side: 8-bit Screen */}
-             <div className="w-full md:w-96 aspect-video bg-black border-4 border-gray-600 relative overflow-hidden group">
-                <div className="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-green-500 opacity-30 leading-none whitespace-pre select-none">
-                  {`
-                  010101010101010101
-                  1010  GENERATE  1010
-                  010101010101010101
-                  `}
-                </div>
-                
-                {/* Simulated AI UI */}
-                <div className="absolute inset-4 border border-game-cyan/50 p-2">
-                   <div className="flex justify-between border-b border-game-cyan/30 pb-1 mb-2">
-                     <span className="text-[10px] text-game-cyan">AI_BUILDER.exe</span>
-                     <div className="flex gap-1">
-                       <div className="w-2 h-2 bg-red-500"></div>
-                       <div className="w-2 h-2 bg-yellow-500"></div>
-                     </div>
-                   </div>
-                   <div className="space-y-1 font-mono text-[10px] text-white">
-                      <div><span className="text-game-pink">USER:</span> Build a tech club site.</div>
-                      <div className="text-game-cyan animate-pulse">&gt; ANALYZING REQUEST...</div>
-                      <div className="pl-2 border-l-2 border-game-green mt-2 text-gray-400">
-                        Generating Components...<br/>
-                        &gt; Timeline.tsx [OK]<br/>
-                        &gt; App.tsx [OK]<br/>
-                        <span className="text-game-green">DONE.</span>
-                      </div>
-                   </div>
-                </div>
+             {/* Visual Side: Interactive Terminal */}
+             <div className="w-full md:w-[450px]">
+                <InteractiveTerminal 
+                  content={content}
+                  language={language}
+                  setLanguage={setLanguage}
+                  className="w-full aspect-video"
+                />
              </div>
 
            </div>

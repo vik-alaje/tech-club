@@ -15,6 +15,12 @@ const App: React.FC = () => {
   const currentContent = CONTENT[language];
 
   useEffect(() => {
+    if (hasStarted) {
+      window.scrollTo(0, 0);
+    }
+  }, [hasStarted]);
+
+  useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const docHeight = document.documentElement.scrollHeight;
@@ -47,6 +53,7 @@ const App: React.FC = () => {
     return (
       <div className="h-screen w-full bg-black flex flex-col items-center justify-center font-game text-center relative overflow-hidden">
         <RetroGrid />
+        
         <div className="z-20 flex flex-col items-center animate-float-pixel px-4">
            <h1 className="text-4xl md:text-6xl text-white mb-8 text-shadow-retro leading-relaxed">
              {currentContent.ui.heroTitleLine1} <br/>
@@ -215,6 +222,9 @@ const App: React.FC = () => {
             aiBuilderDesc: currentContent.ui.aiBuilderDesc,
             acceleration: currentContent.ui.acceleration
           }}
+          content={currentContent}
+          language={language}
+          setLanguage={setLanguage}
         />
       </section>
 

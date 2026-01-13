@@ -53,8 +53,8 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
     showcaseRules: [
       {
         title: "Demo First",
-        description: "No long intros. Show the project running in the first 60 seconds.",
-        example: "Don't tell us what it does, show us."
+        description: "Start talking about what you're building immediately. Don't wait.",
+        example: "Even if it's not finished, show us the code or the concept right away."
       },
       {
         title: "The Stack",
@@ -76,18 +76,18 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       viewGoals: "REGISTER",
       ready: "READY FOR THE 15TH?",
       credits: "BUILT WITH REACT & TAILWIND",
-      missionObj: ">> MISSION OBJECTIVE: Build Portfolios. Avoid Theory.",
+      missionObj: ">> MISSION OBJECTIVE: Connect with each other while building projects you care about.",
       newQuest: "NEW QUEST AVAILABLE",
       dateLabel: "DATE",
       locationLabel: "LOCATION",
-      questLog: "QUEST LOG",
+      questLog: "EVENT AGENDA",
       timeframe: "TIMEFRAME: 1 HOUR",
       stages: "STAGES",
-      tutorial: "TUTORIAL",
-      legendaryItem: "LEGENDARY ITEM",
-      aiBuilder: "AI APP BUILDER",
-      aiBuilderDesc: "Unlocks Rapid Prototyping ability. Build applications quickly using natural language. No boilerplate required.",
-      acceleration: "ACCELERATION: 1000%",
+      tutorial: "HOW WILL PRESENTATIONS GO?",
+      legendaryItem: "BONUS LOOT",
+      aiBuilder: "AI POINTS BOOSTER",
+      aiBuilderDesc: "Students who present their projects will receive additional AI Points for contributing to the community peer learning.",
+      acceleration: "REWARD: AI POINTS++",
       welcomeUser: "WELCOME",
       levelProgress: "LEVEL PROGRESS",
       level: "LEVEL",
@@ -149,8 +149,8 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
     showcaseRules: [
       {
         title: "Démo d'abord",
-        description: "Pas de longues intros. Montrez le projet en action dès la première minute.",
-        example: "Ne nous dites pas ce que ça fait, montrez-le."
+        description: "Commencez à parler de votre projet immédiatement. N'attendez pas.",
+        example: "Même si ce n'est pas fini, montrez-nous le code ou le concept tout de suite."
       },
       {
         title: "La Stack",
@@ -172,18 +172,18 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       viewGoals: "S'INSCRIRE",
       ready: "PRÊT POUR LE 15 ?",
       credits: "FAIT AVEC REACT & TAILWIND",
-      missionObj: ">> OBJECTIF : Créer des Portfolios. Éviter la Théorie.",
+      missionObj: ">> OBJECTIF : Connectez-vous en créant des projets qui vous tiennent à cœur.",
       newQuest: "NOUVELLE QUÊTE",
       dateLabel: "DATE",
       locationLabel: "LIEU",
-      questLog: "JOURNAL DE QUÊTE",
+      questLog: "AGENDA DE L'ÉVÉNEMENT",
       timeframe: "DURÉE : 1 HEURE",
       stages: "ÉTAPES",
-      tutorial: "TUTORIEL",
-      legendaryItem: "OBJET LÉGENDAIRE",
-      aiBuilder: "GÉNÉRATEUR D'APP IA",
-      aiBuilderDesc: "Débloque la capacité Prototypage Rapide. Créez des applis rapidement avec le langage naturel.",
-      acceleration: "ACCÉLÉRATION: 1000%",
+      tutorial: "DÉROULEMENT DES PRÉSENTATIONS ?",
+      legendaryItem: "BUTIN BONUS",
+      aiBuilder: "BOOSTER POINTS IA",
+      aiBuilderDesc: "Les étudiants qui présentent leurs projets recevront des Points IA supplémentaires pour leur contribution à l'apprentissage collectif.",
+      acceleration: "RÉCOMPENSE : POINTS IA++",
       welcomeUser: "BIENVENUE",
       levelProgress: "PROGRESSION",
       level: "NIVEAU",
