@@ -42,13 +42,6 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasStarted]); // Re-bind if view changes, though technically window scroll is global
 
-  const scrollToSection = (id: string) => {
-      const element = document.getElementById(id);
-      if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-      }
-  };
-
   // START SCREEN
   if (!hasStarted) {
     return (
