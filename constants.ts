@@ -190,7 +190,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       footerText1: "Nous sommes ravis de vous accueillir.",
       footerText2: "Cliquez ici pour remplir le formulaire",
       joinUrl: "https://forms.office.com/e/QhTusbmEuB?origin=lprLink",
-      registerUrl: "https://forms.office.com/e/HQTXSNfuLp?origin=lprLink"
+      registerUrl: "https://forms.office.com/r/QjZYKi5ANu?origin=lprLink"
     }
   }
 };
