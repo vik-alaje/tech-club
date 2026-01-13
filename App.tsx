@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowDown, Github, Gamepad2, Heart } from 'lucide-react';
+import { ArrowDown, Gamepad2, Heart, UserPlus } from 'lucide-react';
 import RetroGrid from './components/RetroGrid';
 import Timeline from './components/Timeline';
 import PresentationGuide from './components/PresentationGuide';
@@ -141,7 +141,7 @@ const App: React.FC = () => {
 
           <div className="flex items-center gap-4">
              <a 
-               href="https://forms.office.com/e/HCjqi3C7uy" 
+               href={currentContent.ui.joinUrl} 
                target="_blank" 
                rel="noopener noreferrer"
                className="px-4 py-2 bg-game-green text-black text-[10px] border-b-4 border-green-800 active:border-b-0 active:translate-y-1 hover:brightness-110 transition-all"
@@ -228,30 +228,24 @@ const App: React.FC = () => {
       {/* Game Over / Credits */}
       <footer className="relative z-10 py-24 px-4 text-center bg-black border-t-4 border-white">
         <div className="max-w-3xl mx-auto space-y-10">
-          <h2 className="text-3xl md:text-5xl font-game text-white glitch" data-text="READY?">
+          <h2 className="text-3xl md:text-5xl font-game text-white glitch" data-text={currentContent.ui.ready}>
             {currentContent.ui.ready}
           </h2>
           
           <div className="font-mono text-gray-400">
-             <p>Classes teach us theory. This guild is for the grind.</p>
-             <p className="mt-2 text-game-green">Are you ready to join the party?</p>
+             <p>{currentContent.ui.footerText1}</p>
+             <p className="mt-2 text-game-green">{currentContent.ui.footerText2}</p>
           </div>
 
           <div className="flex flex-col md:flex-row justify-center gap-6 font-game text-xs">
-             <button 
-               onClick={() => scrollToSection('goals')}
-               className="flex items-center justify-center gap-3 px-8 py-4 bg-white text-black border-b-8 border-gray-400 hover:border-gray-500 active:border-b-0 active:translate-y-2 transition-all"
-             >
-               <Github size={20} />
-               {currentContent.ui.viewGoals}
-             </button>
              <a 
-               href="https://forms.office.com/e/HCjqi3C7uy"
+               href={currentContent.ui.registerUrl}
                target="_blank"
                rel="noopener noreferrer"
-               className="px-8 py-4 bg-game-green text-black border-b-8 border-green-800 hover:brightness-110 active:border-b-0 active:translate-y-2 transition-all block text-center"
+               className="flex items-center justify-center gap-3 px-12 py-6 text-sm bg-white text-black border-b-8 border-gray-400 hover:border-gray-500 active:border-b-0 active:translate-y-2 transition-all transform hover:scale-105"
              >
-               {currentContent.ui.joinClub}
+               <UserPlus size={24} />
+               {currentContent.ui.viewGoals}
              </a>
           </div>
           

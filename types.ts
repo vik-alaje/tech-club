@@ -55,6 +55,10 @@ export interface EventContent {
     welcomeUser: string;
     levelProgress: string;
     level: string;
+    footerText1: string;
+    footerText2: string;
+    joinUrl: string;
+    registerUrl: string;
   };
 }
 

@@ -73,8 +73,8 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       pressStart: "PRESS START",
       enterName: "ENTER YOUR NAME",
       joinClub: "JOIN CLUB",
-      viewGoals: "VIEW GOALS",
-      ready: "READY?",
+      viewGoals: "REGISTER",
+      ready: "READY FOR THE 15TH?",
       credits: "BUILT WITH REACT & TAILWIND",
       missionObj: ">> MISSION OBJECTIVE: Build Portfolios. Avoid Theory.",
       newQuest: "NEW QUEST AVAILABLE",
@@ -90,7 +90,11 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       acceleration: "ACCELERATION: 1000%",
       welcomeUser: "WELCOME",
       levelProgress: "LEVEL PROGRESS",
-      level: "LEVEL"
+      level: "LEVEL",
+      footerText1: "We're excited to have you join us.",
+      footerText2: "Click here to fill the form",
+      joinUrl: "https://forms.office.com/e/HCjqi3C7uy",
+      registerUrl: "https://forms.office.com/e/HQTXSNfuLp?origin=lprLink"
     }
   },
   fr: {
@@ -165,8 +169,8 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       pressStart: "COMMENCER",
       enterName: "VOTRE NOM",
       joinClub: "REJOINDRE",
-      viewGoals: "VOIR OBJECTIFS",
-      ready: "PRÊT ?",
+      viewGoals: "S'INSCRIRE",
+      ready: "PRÊT POUR LE 15 ?",
       credits: "FAIT AVEC REACT & TAILWIND",
       missionObj: ">> OBJECTIF : Créer des Portfolios. Éviter la Théorie.",
       newQuest: "NOUVELLE QUÊTE",
@@ -182,7 +186,11 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       acceleration: "ACCÉLÉRATION: 1000%",
       welcomeUser: "BIENVENUE",
       levelProgress: "PROGRESSION",
-      level: "NIVEAU"
+      level: "NIVEAU",
+      footerText1: "Nous sommes ravis de vous accueillir.",
+      footerText2: "Cliquez ici pour remplir le formulaire",
+      joinUrl: "https://forms.office.com/e/QhTusbmEuB?origin=lprLink",
+      registerUrl: "https://forms.office.com/e/HQTXSNfuLp?origin=lprLink"
     }
   }
 };
