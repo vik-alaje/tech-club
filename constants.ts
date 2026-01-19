@@ -6,8 +6,8 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       title: "Aivancity Tech Club",
       subtitle: "Building a Builder's Community",
       mission: "Creating a community where everyone is really interested in building.",
-      location: "Pending Confirmation",
-      date: "Thursday, 15th"
+      location: "NEXUS",
+      date: "Tuesday, 20th"
     },
     agenda: [
       {
@@ -74,7 +74,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       enterName: "ENTER YOUR NAME",
       joinClub: "JOIN CLUB",
       viewGoals: "REGISTER",
-      ready: "READY FOR THE 15TH?",
+      ready: "READY FOR THE 20TH?",
       credits: "BUILT WITH REACT & TAILWIND",
       missionObj: ">> MISSION OBJECTIVE: Connect with each other while building projects you care about.",
       newQuest: "NEW QUEST AVAILABLE",
@@ -102,8 +102,8 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       title: "Club Tech Aivancity",
       subtitle: "Construire une communauté de créateurs",
       mission: "Créer une communauté où tout le monde s'intéresse vraiment à la création.",
-      location: "En attente de confirmation",
-      date: "Jeudi 15"
+      location: "NEXUS",
+      date: "Mardi 20"
     },
     agenda: [
       {
@@ -170,7 +170,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       enterName: "VOTRE NOM",
       joinClub: "REJOINDRE",
       viewGoals: "S'INSCRIRE",
-      ready: "PRÊT POUR LE 15 ?",
+      ready: "PRÊT POUR LE 20 ?",
       credits: "FAIT AVEC REACT & TAILWIND",
       missionObj: ">> OBJECTIF : Connectez-vous en créant des projets qui vous tiennent à cœur.",
       newQuest: "NOUVELLE QUÊTE",
