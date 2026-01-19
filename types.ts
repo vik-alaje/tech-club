@@ -28,6 +28,7 @@ export interface EventContent {
     mission: string;
     location: string;
     date: string;
+    time: string;
   };
   agenda: AgendaItem[];
   showcaseRules: ShowcaseRule[];
@@ -43,6 +44,7 @@ export interface EventContent {
     missionObj: string;
     newQuest: string;
     dateLabel: string;
+    timeLabel: string;
     locationLabel: string;
     questLog: string;
     timeframe: string;

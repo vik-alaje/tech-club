@@ -7,12 +7,13 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       subtitle: "Building a Builder's Community",
       mission: "Creating a community where everyone is really interested in building.",
       location: "NEXUS",
-      date: "Tuesday, 20th"
+      date: "Tuesday, 20th",
+      time: "5:30 PM - 6:30 PM"
     },
     agenda: [
       {
         id: '1',
-        time: '00:00 - 00:10',
+        time: '5:30 PM - 5:40 PM',
         duration: '10 Min',
         title: 'The Kickoff',
         description: 'Introduction to the mission and the team.',
@@ -25,7 +26,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       },
       {
         id: '2',
-        time: '00:10 - 00:50',
+        time: '5:40 PM - 6:20 PM',
         duration: '40 Min',
         title: 'Project Showcase',
         description: '5 Lightning Talks from builders on campus.',
@@ -39,7 +40,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       },
       {
         id: '3',
-        time: '00:50 - 01:00',
+        time: '6:20 PM - 6:30 PM',
         duration: '10 Min',
         title: 'The Wrap-up',
         description: 'Future plans and networking.',
@@ -79,6 +80,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       missionObj: ">> MISSION OBJECTIVE: Connect with each other while building projects you care about.",
       newQuest: "NEW QUEST AVAILABLE",
       dateLabel: "DATE",
+      timeLabel: "TIME",
       locationLabel: "LOCATION",
       questLog: "EVENT AGENDA",
       timeframe: "TIMEFRAME: 1 HOUR",
@@ -103,12 +105,13 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       subtitle: "Construire une communauté de créateurs",
       mission: "Créer une communauté où tout le monde s'intéresse vraiment à la création.",
       location: "NEXUS",
-      date: "Mardi 20"
+      date: "Mardi 20",
+      time: "17h30 - 18h30"
     },
     agenda: [
       {
         id: '1',
-        time: '00:00 - 00:10',
+        time: '17h30 - 17h40',
         duration: '10 Min',
         title: 'Le Lancement',
         description: "Introduction à la mission et à l'équipe.",
@@ -121,7 +124,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       },
       {
         id: '2',
-        time: '00:10 - 00:50',
+        time: '17h40 - 18h20',
         duration: '40 Min',
         title: 'Démos de Projets',
         description: '5 présentations rapides par des étudiants.',
@@ -135,7 +138,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       },
       {
         id: '3',
-        time: '00:50 - 01:00',
+        time: '18h20 - 18h30',
         duration: '10 Min',
         title: 'Conclusion',
         description: 'Projets futurs et networking.',
@@ -175,6 +178,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       missionObj: ">> OBJECTIF : Connectez-vous en créant des projets qui vous tiennent à cœur.",
       newQuest: "NOUVELLE QUÊTE",
       dateLabel: "DATE",
+      timeLabel: "HEURE",
       locationLabel: "LIEU",
       questLog: "AGENDA DE L'ÉVÉNEMENT",
       timeframe: "DURÉE : 1 HEURE",

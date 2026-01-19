@@ -177,13 +177,23 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8 font-game text-xs">
+            {/* Date Block */}
             <div className="group cursor-pointer">
               <div className="bg-game-black border-4 border-white px-6 py-4 shadow-retro group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
                 <span className="text-gray-400 block mb-1">{currentContent.ui.dateLabel}</span>
                 <span className="text-game-cyan">{currentContent.eventDetails.date}</span>
               </div>
             </div>
+
+            {/* Time Block */}
+            <div className="group cursor-pointer">
+              <div className="bg-game-black border-4 border-white px-6 py-4 shadow-retro group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
+                <span className="text-gray-400 block mb-1">{currentContent.ui.timeLabel}</span>
+                <span className="text-game-yellow">{currentContent.eventDetails.time}</span>
+              </div>
+            </div>
             
+            {/* Location Block */}
             <div className="group cursor-pointer">
               <div className="bg-game-black border-4 border-white px-6 py-4 shadow-retro group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
                 <span className="text-gray-400 block mb-1">{currentContent.ui.locationLabel}</span>
