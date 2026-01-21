@@ -8,46 +8,46 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       mission: "Creating a community where everyone is really interested in building.",
       location: "NEXUS",
       date: "Tuesday, 20th",
-      time: "5:30 PM - 6:30 PM"
+      time: "5:30 PM - 7:00 PM"
     },
     agenda: [
       {
         id: '1',
-        time: '5:30 PM - 5:40 PM',
-        duration: '10 Min',
-        title: 'The Kickoff',
-        description: 'Introduction to the mission and the team.',
+        time: '5:30 PM - 5:50 PM',
+        duration: '20 Min',
+        title: 'Welcome & Learning',
+        description: 'Joy of learning as a community.',
         icon: 'rocket',
         details: [
-          "Mission: Learning by Doing",
-          "Problem: Theory vs. Practice",
-          "Team Intros: Chris, Victoria"
+          "Speaker: Chris Tahan",
+          "The Welcome Address",
+          "Theme: Joy of Learning"
         ]
       },
       {
         id: '2',
-        time: '5:40 PM - 6:20 PM',
-        duration: '40 Min',
-        title: 'Project Showcase',
-        description: '5 Lightning Talks from builders on campus.',
+        time: '5:50 PM - 6:35 PM',
+        duration: '45 Min',
+        title: 'AI Python Teacher',
+        description: 'Building an AI teacher based on data scraped off the web.',
         icon: 'code',
         details: [
-          "5 Presenters x 8 Minutes",
-          "Live Demos (No Slides)",
-          "Tech Stack Reveal",
-          "The 'Pivot' Challenge"
+          "Speaker: Louis Leclere",
+          "Tech: Web Scraping & AI",
+          "Project: Automated Teaching"
         ]
       },
       {
         id: '3',
-        time: '6:20 PM - 6:30 PM',
-        duration: '10 Min',
-        title: 'The Wrap-up',
-        description: 'Future plans and networking.',
-        icon: 'users',
+        time: '6:35 PM - 7:00 PM',
+        duration: '25 Min',
+        title: 'Local AI Memory',
+        description: 'A local AI assistant with retentive memory using SQLite.',
+        icon: 'zap',
         details: [
-          "Upcoming Meeting Details",
-          "Networking Mixer"
+          "Speaker: Hugo KINGKEOMANIVONG",
+          "Tech: SQLite Integration",
+          "Focus: Local & Retentive"
         ]
       }
     ],
@@ -70,7 +70,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
     ],
     ui: {
       heroTitleLine1: "TECH CLUB",
-      heroTitleLine2: "LAUNCH EVENT",
+      heroTitleLine2: "GATHERING",
       pressStart: "PRESS START",
       enterName: "ENTER YOUR NAME",
       joinClub: "JOIN CLUB",
@@ -83,9 +83,10 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       timeLabel: "TIME",
       locationLabel: "LOCATION",
       questLog: "EVENT AGENDA",
-      timeframe: "TIMEFRAME: 1 HOUR",
+      timeframe: "TIMEFRAME: 1.5 HOURS",
       stages: "STAGES",
       tutorial: "HOW WILL PRESENTATIONS GO?",
+      systemMessage: "[SYSTEM MESSAGE]: Time slots vary by project depth. Respect the timer.",
       legendaryItem: "BONUS LOOT",
       aiBuilder: "AI POINTS BOOSTER",
       aiBuilderDesc: "Students who present their projects will receive additional AI Points for contributing to the community peer learning.",
@@ -106,46 +107,46 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       mission: "Créer une communauté où tout le monde s'intéresse vraiment à la création.",
       location: "NEXUS",
       date: "Mardi 20",
-      time: "17h30 - 18h30"
+      time: "17h30 - 19h00"
     },
     agenda: [
       {
         id: '1',
-        time: '17h30 - 17h40',
-        duration: '10 Min',
-        title: 'Le Lancement',
-        description: "Introduction à la mission et à l'équipe.",
+        time: '17h30 - 17h50',
+        duration: '20 Min',
+        title: 'Bienvenue & Apprentissage',
+        description: "La joie d'apprendre en communauté.",
         icon: 'rocket',
         details: [
-          "Mission : Apprendre par la pratique",
-          "Problème : Théorie vs Pratique",
-          "Équipe : Chris, Victoria"
+          "Speaker : Chris Tahan",
+          "Le mot de bienvenue",
+          "Thème : La joie d'apprendre"
         ]
       },
       {
         id: '2',
-        time: '17h40 - 18h20',
-        duration: '40 Min',
-        title: 'Démos de Projets',
-        description: '5 présentations rapides par des étudiants.',
+        time: '17h50 - 18h35',
+        duration: '45 Min',
+        title: 'Professeur Python IA',
+        description: "Création d'un prof IA basé sur des données web scrappées.",
         icon: 'code',
         details: [
-          "5 Présentateurs x 8 Minutes",
-          "Démos en direct (Pas de slides)",
-          "Stack Technique",
-          "Le défi 'Pivot'"
+          "Speaker : Louis Leclere",
+          "Tech : Web Scraping & IA",
+          "Projet : Enseignement Automatisé"
         ]
       },
       {
         id: '3',
-        time: '18h20 - 18h30',
-        duration: '10 Min',
-        title: 'Conclusion',
-        description: 'Projets futurs et networking.',
-        icon: 'users',
+        time: '18h35 - 19h00',
+        duration: '25 Min',
+        title: 'Mémoire IA Locale',
+        description: "Assistant IA local avec mémoire rétentive via SQLite.",
+        icon: 'zap',
         details: [
-          "Détails de la prochaine réunion",
-          "Temps d'échange"
+          "Speaker : Hugo KINGKEOMANIVONG",
+          "Tech : Intégration SQLite",
+          "Focus : Local & Rétentif"
         ]
       }
     ],
@@ -168,7 +169,7 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
     ],
     ui: {
       heroTitleLine1: "CLUB TECH",
-      heroTitleLine2: "LANCEMENT",
+      heroTitleLine2: "RENCONTRE",
       pressStart: "COMMENCER",
       enterName: "VOTRE NOM",
       joinClub: "REJOINDRE",
@@ -181,9 +182,10 @@ export const CONTENT: Record<'en' | 'fr', EventContent> = {
       timeLabel: "HEURE",
       locationLabel: "LIEU",
       questLog: "AGENDA DE L'ÉVÉNEMENT",
-      timeframe: "DURÉE : 1 HEURE",
+      timeframe: "DURÉE : 1H30",
       stages: "ÉTAPES",
       tutorial: "DÉROULEMENT DES PRÉSENTATIONS ?",
+      systemMessage: "[MESSAGE SYSTÈME] : Les créneaux varient selon le projet. Respectez le minuteur.",
       legendaryItem: "BUTIN BONUS",
       aiBuilder: "BOOSTER POINTS IA",
       aiBuilderDesc: "Les étudiants qui présentent leurs projets recevront des Points IA supplémentaires pour leur contribution à l'apprentissage collectif.",

@@ -7,6 +7,7 @@ interface PresentationGuideProps {
   rules: ShowcaseRule[];
   labels: {
     tutorial: string;
+    systemMessage: string;
     legendaryItem: string;
     aiBuilder: string;
     aiBuilderDesc: string;
@@ -29,7 +30,7 @@ const PresentationGuide: React.FC<PresentationGuideProps> = ({ rules, labels, co
             <span className="text-game-pink">&lt;</span> {labels.tutorial} <span className="text-game-pink">/&gt;</span>
           </h2>
           <p className="font-mono text-game-green text-sm max-w-2xl mx-auto border border-game-green/30 bg-game-green/5 p-4 rounded">
-            [SYSTEM MESSAGE]: Speakers have 8 minutes each. Here is how to use that time best.
+            {labels.systemMessage}
           </p>
         </div>
 

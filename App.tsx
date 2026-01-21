@@ -230,7 +230,8 @@ const App: React.FC = () => {
             legendaryItem: currentContent.ui.legendaryItem,
             aiBuilder: currentContent.ui.aiBuilder,
             aiBuilderDesc: currentContent.ui.aiBuilderDesc,
-            acceleration: currentContent.ui.acceleration
+            acceleration: currentContent.ui.acceleration,
+            systemMessage: currentContent.ui.systemMessage
           }}
           content={currentContent}
           language={language}

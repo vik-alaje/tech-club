@@ -38,7 +38,7 @@ const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ content, lang
         if (subCmd === 'aipoints') {
           output = [
             "--- AI POINTS INFO ---",
-            "Presenting at the launch event grants BONUS AI POINTS.",
+            "Presenting at the gathering grants BONUS AI POINTS.",
             "Logic: Sharing knowledge = Community Growth.",
             "Status: ACTIVE"
           ];

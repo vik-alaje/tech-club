@@ -50,6 +50,7 @@ export interface EventContent {
     timeframe: string;
     stages: string;
     tutorial: string;
+    systemMessage: string;
     legendaryItem: string;
     aiBuilder: string;
     aiBuilderDesc: string;
