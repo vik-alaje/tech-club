@@ -1,12 +1,14 @@
 import React from 'react';
 import { AgendaItem } from '../types';
-import { Sword, Scroll, Users, Skull } from 'lucide-react';
+import { Sword, Scroll, Users, Skull, Globe, Star } from 'lucide-react';
 
 const iconMap: any = {
   rocket: Sword,
   code: Scroll, 
   users: Users, 
-  zap: Skull,    
+  zap: Skull,
+  globe: Globe,
+  star: Star
 };
 
 interface TimelineProps {

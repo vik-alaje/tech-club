@@ -12,7 +12,7 @@ export interface AgendaItem {
   title: string;
   description: string;
   details?: string[];
-  icon: 'rocket' | 'code' | 'users' | 'zap';
+  icon: 'rocket' | 'code' | 'users' | 'zap' | 'globe' | 'star';
 }
 
 export interface ShowcaseRule {
